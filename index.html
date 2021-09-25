@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./build/tailwind.css" />
+    <link
+      rel="stylesheet"
+      href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body class="bg-gray-50">
+    <div class="container mx-auto py-12">
+      <section
+        class="
+          mx-auto
+          w-2/5
+          h-screen
+          bg-gray-200
+          p-4
+          flex flex-col
+          justify-around
+          items-center
+          self-center
+          rounded-3xl
+          shadow-xl
+        "
+      >
+        <header class="w-80">
+          <input
+            type="text"
+            placeholder="Enter an activity..."
+            id="item"
+            class="w-64 p-2 rounded text-gray-800 shadow-lg"
+          />
+          <button
+            id="add"
+            class="
+              w-12
+              bg-purple-600
+              shadow-lg
+              text-gray-100
+              font-semibold
+              p-2
+              rounded
+            "
+          >
+            Add
+          </button>
+        </header>
+        <div id="thingsToDo" class="w-80 pl-4 ">
+          <h2 class="text-purple-700 font-bold text-2xl underline mb-4">
+            To Do
+          </h2>
+          <ul id="todo" class="text-gray-800 font-semibold"></ul>
+        </div>
+        <div id="completedTasks" class="w-80 pl-4">
+          <h2 class="text-purple-700 font-bold text-2xl underline mb-4">
+            Completed
+          </h2>
+          <ul id="completed"></ul>
+        </div>
+      </section>
+    </div>
+    <script src="/public/script.js"></script>
+  </body>
+</html>
