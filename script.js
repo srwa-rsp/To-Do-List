@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buttons.appendChild(remove);
         buttons.appendChild(complete);
         item.appendChild(buttons);
-        list.insertBefore(item, list.childNodes[0]);  //parentNode.insertBefore(newNode, ReferenceNode)
+        list.insertBefore(item, list.childNodes[0]);  
     }
 
     function completeItem() {
