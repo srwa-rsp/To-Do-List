@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let list = document.getElementById("todo");
         let item = document.createElement('li');
         item.innerText = text;
-        item.classList.add('flex', 'justify-between');
+        item.classList.add('flex', 'justify-between','bg-gray-100','rounded','px-4','py-1','mb-1');
 
         let buttons = document.createElement('div');
         buttons.classList.add('buttons','inline');
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buttons.appendChild(remove);
         buttons.appendChild(complete);
         item.appendChild(buttons);
-        list.insertBefore(item, list.childNodes[0]);  
+        list.insertBefore(item, list.childNodes[0]); 
     }
 
     function completeItem() {
