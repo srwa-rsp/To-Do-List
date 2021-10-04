@@ -10,12 +10,12 @@ module.exports = {
       'primary': '#3d47af',
       'secondary': '#0a155a',
       'thirdary': '#d103fc'}),
-      textColor: theme => theme('colors'),
-      textColor: {
+      textColor: theme => ({
+        ...theme('colors'),
         'primary': '#d7d7d7',
         'secondary': '#b6bfda',
         'danger': '#e3342f',
-      },
+      }),
     extend: {},
   },
   variants: {
