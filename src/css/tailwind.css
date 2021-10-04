@@ -3,7 +3,4 @@
 @tailwind utilities;
 
 @layer components {
-  .paragraph {
-    @apply bg-blue-600;
-  }
 }
