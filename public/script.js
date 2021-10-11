@@ -1,33 +1,36 @@
+// Select DOM
+const todos = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
+const addButton = document.querySelector('#add');
+const input = document.querySelector('#item');
 
-    let addButton = document.querySelector("#add");
-    let addInput = document.querySelector("#item");
+//Event Listeners
+addButton.addEventListener('click',addTodo);
 
-    addButton.addEventListener("click", function() {
-        let newItem = addInput.value;
-        if (newItem) {
-            addItemTodo(newItem);        
-            addInput.value = "";
-        }
+
+//Functions
+function addTodo(e){
+    e.preventDefault();
+    const todo = input.value;
+    input.value = '';
+    todos.push({
+        id: Date.now() + todo,
+        todo: todo,
+        isCompleted: false,
     });
+    renderList();
+}
 
-    // user press enter 
-
-    addInput.addEventListener("keypress", function(e) {
-        if (13 === e.keyCode) {
-            let newItem = document.getElementById("item").value;
-            if (newItem) {
-                addItemTodo(newItem);
-                document.getElementById("item").value = "";
-            }
-        }
-    });
-
-    function addItemTodo(text) {
-        let list = document.getElementById("todo");
-        let item = document.createElement('li');
-        item.innerText = text;
-        item.classList.add('flex', 'justify-between','bg-secondary','rounded-xl','px-4','py-1','mb-1' , 'text-primary');
-
+function renderList(){
+    const todoList = document.getElementById('todo');
+    const completedList = document.getElementById('completed');
+    todoList.innerHTML = '';
+    completedList.innerHTML = '';
+    todos.forEach((todo) => {
+        const list = document.createElement('li');
+        list.innerText = todo.todo;
+        list.setAttribute('id', todo.id);
+        list.classList.add('flex', 'justify-between','bg-secondary','rounded-xl','px-4','py-1','mb-1' , 'text-primary');
+      
         let buttons = document.createElement('div');
         buttons.classList.add('buttons','inline');
 
@@ -39,26 +42,51 @@
         complete.classList.add('complete','fa','fa-check');
         complete.addEventListener("click", completeItem);
 
+        let recycle = document.createElement('button');
+        recycle.classList.add('recycle','fa','fa-recycle');
+        recycle.addEventListener('click',recycleItem);
+
         /************ * append *******************/
         buttons.appendChild(remove);
         buttons.appendChild(complete);
-        item.appendChild(buttons);
-        list.insertBefore(item, list.childNodes[0]); 
-    }
+        list.appendChild(buttons);
+        todoList.insertBefore(list, todoList.childNodes[0]); 
 
-    function completeItem() {
-        let item = this.parentNode.parentNode;
-        let parent = item.parentNode;
-        let id = parent.id;
-        let target = (id === "todo") ? document.getElementById("completed") : document.getElementById("todo");
+        if (todo.isCompleted) {
+                completedList.appendChild(list);
+                list.classList.toggle('line-through');
+                buttons.removeChild(complete);
+                buttons.appendChild(recycle);
+                
+              } else {
+                todoList.appendChild(list);
+              }
+    });//End of forEach
+}
 
-        parent.removeChild(item);
-        item.classList.toggle('line-through');
-        target.insertBefore(item, target.childNodes[0]);
-    }
+function completeItem(e){
+    let item = this.parentNode.parentNode;
+    const currentId = item.getAttribute('id');
+    const todo = todos.find((item) => item.id === currentId);
+    todo.isCompleted = true;
+    renderList();
+}
 
-    function removeItem() {
-        let item = this.parentNode.parentNode;
-        let parent = item.parentNode;
-        parent.removeChild(item);
-    }
+function recycleItem(){
+    let item = this.parentNode.parentNode;
+    const currentId = item.getAttribute('id');
+    const todo = todos.find((item) => item.id === currentId);
+    todo.isCompleted = false;
+    renderList();
+}
+
+function removeItem(){
+    const item = this.parentNode.parentNode;
+    const parent = item.parentNode;
+    parent.removeChild(item);
+    const currentId = item.getAttribute('id');
+
+    const todoIndex = todos.indexOf(todos.find((item) => item.id === currentId));
+    todos.pop(todoIndex);
+}
+
