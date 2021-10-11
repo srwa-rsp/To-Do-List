@@ -48,7 +48,7 @@ function renderList(){
         let recycle = document.createElement('button');
         recycle.classList.add('recycle','fa','fa-recycle');
         recycle.addEventListener('click',recycleItem);
-
+        
         /************ * append *******************/
         buttons.appendChild(remove);
         buttons.appendChild(complete);
@@ -61,7 +61,7 @@ function renderList(){
                 buttons.removeChild(complete);
                 buttons.appendChild(recycle);
                 
-              } else {
+              }else {
                 todoList.appendChild(list);
               }
     });//End of forEach
@@ -86,23 +86,23 @@ function recycleItem(){
 function removeItem(){
     const item = this.parentNode.parentNode;
     const parent = item.parentNode;
-    
     const currentId = item.getAttribute('id');
     const todo = todos.find((item) => item.id === currentId);
-    console.log(todo);
     todo.isDeleted = true;
     const todoIndex = todos.indexOf(todo);
     todos.pop(todoIndex);
     parent.removeChild(item);
+    renderList();
 }
 
 function saveLocalTodos(){
     const savedItems = [];
     todos.forEach((todo) => {
-        if(!todo.isCompleted && !todo.isDeleted){
+        if( !todo.isDeleted){
             savedItems.push(todo);
         }
     });
 
-    localStorage.setItem('todos', JSON.stringify(savedItems));
+   localStorage.setItem('todos', JSON.stringify(savedItems));
+
 }
