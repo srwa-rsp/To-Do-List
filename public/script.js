@@ -5,6 +5,7 @@ const input = document.querySelector('#item');
 
 //Event Listeners
 addButton.addEventListener('click',addTodo);
+document.addEventListener("DOMContentLoaded", renderList);
 
 
 //Functions
@@ -16,6 +17,7 @@ function addTodo(e){
         id: Date.now() + todo,
         todo: todo,
         isCompleted: false,
+        isDeleted: false,
     });
     renderList();
 }
@@ -28,6 +30,7 @@ function renderList(){
     todos.forEach((todo) => {
         const list = document.createElement('li');
         list.innerText = todo.todo;
+        saveLocalTodos(list);
         list.setAttribute('id', todo.id);
         list.classList.add('flex', 'justify-between','bg-secondary','rounded-xl','px-4','py-1','mb-1' , 'text-primary');
       
@@ -83,10 +86,23 @@ function recycleItem(){
 function removeItem(){
     const item = this.parentNode.parentNode;
     const parent = item.parentNode;
-    parent.removeChild(item);
+    
     const currentId = item.getAttribute('id');
-
-    const todoIndex = todos.indexOf(todos.find((item) => item.id === currentId));
+    const todo = todos.find((item) => item.id === currentId);
+    console.log(todo);
+    todo.isDeleted = true;
+    const todoIndex = todos.indexOf(todo);
     todos.pop(todoIndex);
+    parent.removeChild(item);
 }
 
+function saveLocalTodos(){
+    const savedItems = [];
+    todos.forEach((todo) => {
+        if(!todo.isCompleted && !todo.isDeleted){
+            savedItems.push(todo);
+        }
+    });
+
+    localStorage.setItem('todos', JSON.stringify(savedItems));
+}
