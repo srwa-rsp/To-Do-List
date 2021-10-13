@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./public/build/tailwind.css" />
     <link
       rel="stylesheet"
       href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
     />
+    <link rel="stylesheet" href="./public/build/tailwind.css" />
+
     <title>Document</title>
   </head>
   <body class="bg-gray-50">
@@ -16,7 +17,8 @@
       <section
         class="
           mx-auto
-          w-2/6
+          w-1/2
+          lg:w-2/6
           h-screen
           bg-primary
           p-4
@@ -28,18 +30,18 @@
           shadow-xl
         "
       >
-        <form id="form" class="w-80">
+        <form id="form" class="w-3/4">
           <input
             type="text"
             placeholder="Enter an activity..."
             id="item"
-            class="w-64 p-2 rounded-xl text-gray-800 shadow-lg"
+            class="w-4/5 p-2 rounded-xl text-gray-800 shadow-lg"
             required
           />
           <button
             id="add"
             class="
-              w-12
+              w-1/6
               bg-thirdary
               shadow-lg
               font-semibold
@@ -52,13 +54,13 @@
             <li class="fa fa-plus"></li>
           </button>
         </form>
-        <div id="thingsToDo" class="w-80">
-          <h2 class="text-secondary font-bold text-2xl mb-4">To Do</h2>
-          <ul id="todo" class="text-primary font-semibold"></ul>
+        <div id="thingsToDo" class="w-full">
+          <h2 class="text-secondary font-bold text-2xl mb-4 ml-4">To Do</h2>
+          <ul id="todo" class="text-primary font-semibold w-5/6 ml-6"></ul>
         </div>
-        <div id="completedTasks" class="w-80">
-          <h2 class="text-secondary font-bold text-2xl mb-4">Completed</h2>
-          <ul id="completed" class="text-primary font-semibold"></ul>
+        <div id="completedTasks" class="w-full">
+          <h2 class="text-secondary font-bold text-2xl mb-4 ml-4">Completed</h2>
+          <ul id="completed" class="text-primary font-semibold w-5/6 ml-6"></ul>
         </div>
       </section>
     </div>

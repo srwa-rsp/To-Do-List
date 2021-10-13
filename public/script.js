@@ -38,7 +38,7 @@ function renderList(){
         buttons.classList.add('buttons','inline');
 
         let remove = document.createElement('button');
-        remove.classList.add('remove','fa','fa-trash-o','p-2');
+        remove.classList.add('remove','fa','fa-trash','p-2');
         remove.addEventListener("click", removeItem);
 
         let complete = document.createElement('button');
@@ -53,7 +53,6 @@ function renderList(){
         buttons.appendChild(remove);
         buttons.appendChild(complete);
         list.appendChild(buttons);
-        todoList.insertBefore(list, todoList.childNodes[0]); 
 
         if (todo.isCompleted) {
                 completedList.appendChild(list);
@@ -89,9 +88,9 @@ function removeItem(){
     const currentId = item.getAttribute('id');
     const todo = todos.find((item) => item.id === currentId);
     todo.isDeleted = true;
-    const todoIndex = todos.indexOf(todo);
-    todos.pop(todoIndex);
     parent.removeChild(item);
+    todos.splice(currentId,1);
+    
     renderList();
 }
 
