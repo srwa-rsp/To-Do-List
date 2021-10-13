@@ -30,7 +30,7 @@ function renderList(){
     todos.forEach((todo) => {
         const list = document.createElement('li');
         list.innerText = todo.todo;
-        saveLocalTodos(list);
+       
         list.setAttribute('id', todo.id);
         list.classList.add('flex', 'justify-between','bg-secondary','rounded-xl','px-4','py-1','mb-1' , 'text-primary');
       
@@ -53,17 +53,16 @@ function renderList(){
         buttons.appendChild(remove);
         buttons.appendChild(complete);
         list.appendChild(buttons);
-
-        if (todo.isCompleted) {
-                completedList.appendChild(list);
-                list.classList.toggle('line-through');
-                buttons.removeChild(complete);
-                buttons.appendChild(recycle);
-                
-              }else {
-                todoList.appendChild(list);
-              }
-    });//End of forEach
+         if (todo.isCompleted) {
+        completedList.appendChild(list);
+        list.classList.toggle('line-through');
+        buttons.removeChild(complete);
+        buttons.appendChild(recycle);
+         }else {
+        todoList.appendChild(list);
+          }
+      saveLocalTodos(list);
+    });
 }
 
 function completeItem(e){
@@ -87,10 +86,10 @@ function removeItem(){
     const parent = item.parentNode;
     const currentId = item.getAttribute('id');
     const todo = todos.find((item) => item.id === currentId);
+    const todoIndex = todos.indexOf(todo);
     todo.isDeleted = true;
     parent.removeChild(item);
-    todos.splice(currentId,1);
-    
+    todos.splice(todoIndex,1);
     renderList();
 }
 
@@ -101,7 +100,5 @@ function saveLocalTodos(){
             savedItems.push(todo);
         }
     });
-
    localStorage.setItem('todos', JSON.stringify(savedItems));
-
 }
