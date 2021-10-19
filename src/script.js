@@ -32,21 +32,21 @@ function renderList(){
         list.innerText = todo.todo;
        
         list.setAttribute('id', todo.id);
-        list.classList.add('flex', 'justify-between','bg-secondary','rounded-xl','px-4','py-1','mb-1' , 'text-primary');
+        list.classList.add('flex', 'justify-between', 'bg-thirdary','rounded-xl','px-4','py-1','mb-1' , 'text-primary','shadow');
       
         let buttons = document.createElement('div');
         buttons.classList.add('buttons','inline');
 
         let remove = document.createElement('button');
-        remove.classList.add('remove','fa','fa-trash','p-2');
+        remove.classList.add('remove','fa','fa-trash','p-2','shadow','mr-2','rounded');
         remove.addEventListener("click", removeItem);
 
         let complete = document.createElement('button');
-        complete.classList.add('complete','fa','fa-check');
+        complete.classList.add('complete','fa','fa-check','shadow','rounded','p-2');
         complete.addEventListener("click", completeItem);
 
         let recycle = document.createElement('button');
-        recycle.classList.add('recycle','fa','fa-recycle');
+        recycle.classList.add('recycle','fa','fa-recycle','shadow','rounded','p-2');
         recycle.addEventListener('click',recycleItem);
         
         /************ * append *******************/

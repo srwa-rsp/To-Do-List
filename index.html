@@ -12,7 +12,7 @@
 
     <title>Document</title>
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-purple-400">
     <div class="container mx-auto py-12">
       <section
         class="
@@ -35,14 +35,14 @@
             type="text"
             placeholder="Enter an activity..."
             id="item"
-            class="w-4/5 p-2 rounded-xl text-gray-800 shadow-lg"
+            class="w-4/5 p-2 rounded-xl text-gray-800 shadow-lg pl-4"
             required
           />
           <button
             id="add"
             class="
               w-1/6
-              bg-thirdary
+              bg-secondary
               shadow-lg
               font-semibold
               p-2
@@ -55,12 +55,15 @@
           </button>
         </form>
         <div id="thingsToDo" class="w-full">
-          <h2 class="text-secondary font-bold text-2xl mb-4 ml-4">To Do</h2>
-          <ul id="todo" class="text-primary font-semibold w-5/6 ml-6"></ul>
+          <h2 class="text-primary font-bold text-2xl mb-4 ml-4">To Do</h2>
+          <ul id="todo" class="text-secondary font-semibold w-5/6 ml-6"></ul>
         </div>
         <div id="completedTasks" class="w-full">
-          <h2 class="text-secondary font-bold text-2xl mb-4 ml-4">Completed</h2>
-          <ul id="completed" class="text-primary font-semibold w-5/6 ml-6"></ul>
+          <h2 class="text-primary font-bold text-2xl mb-4 ml-4">Completed</h2>
+          <ul
+            id="completed"
+            class="text-secondary font-semibold w-5/6 ml-6"
+          ></ul>
         </div>
       </section>
     </div>

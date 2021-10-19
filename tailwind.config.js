@@ -7,13 +7,13 @@ module.exports = {
   theme: {
     backgroundColor: theme => ({
       ...theme('colors'),
-      'primary': '#3d47af',
-      'secondary': '#0a155a',
-      'thirdary': '#d103fc'}),
+      'primary': '#ffffff',
+      'secondary': '#b57ce3',
+      'thirdary': '#f3f4f4'}),
       textColor: theme => ({
         ...theme('colors'),
-        'primary': '#d7d7d7',
-        'secondary': '#b6bfda',
+        'primary': '#5a5a5a',
+        'secondary': '#6d6d6d',
         'danger': '#e3342f',
       }),
     extend: {},
